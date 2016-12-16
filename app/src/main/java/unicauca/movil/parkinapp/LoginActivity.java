@@ -8,19 +8,21 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import unicauca.movil.parkinapp.database.UsuarioDao;
 import unicauca.movil.parkinapp.databinding.ActivityLoginBinding;
+import unicauca.movil.parkinapp.models.Usuario;
 import unicauca.movil.parkinapp.net.HttpAsyncTask;
 
 public class LoginActivity extends AppCompatActivity implements HttpAsyncTask.OnResponseListener {
 
     //Context context = getApplicationContext();
+    String usr,pass;
     ActivityLoginBinding binding;
-    HttpAsyncTask task_GET = new HttpAsyncTask(HttpAsyncTask.GET, this);
-
-    HttpAsyncTask task_POST = new HttpAsyncTask(HttpAsyncTask.POST, this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +33,11 @@ public class LoginActivity extends AppCompatActivity implements HttpAsyncTask.On
     }
 
     public void goToMain(){
-        String usr =  binding.usr.getEditText().getText().toString();
-        String pass =  binding.pass.getEditText().getText().toString();
+        HttpAsyncTask task_POST = new HttpAsyncTask(HttpAsyncTask.POST, this);
+        usr =  binding.usr.getEditText().getText().toString();
+        pass =  binding.pass.getEditText().getText().toString();
 
-        if (usr == null){
+        if (usr.isEmpty() || usr.equals("")){
 
             CharSequence text = "Digite su usuario";
             int duration = Toast.LENGTH_SHORT;
@@ -42,32 +45,49 @@ public class LoginActivity extends AppCompatActivity implements HttpAsyncTask.On
             Toast toast = Toast.makeText(this, text, duration);
             toast.show();
         }else{
-            if (pass == null){
+            if (pass.isEmpty() || pass.equals("")){
                 CharSequence text = "Digite su contraseña";
                 int duration = Toast.LENGTH_SHORT;
 
                 Toast toast = Toast.makeText(this, text, duration);
                 toast.show();
             }else {
-                //task_GET.execute(getString(R.string.url));
-                Intent intent = new Intent(this, MainActivity.class);
-                startActivity(intent);
+                String obj = "{\"user\": \""+usr+"\", \"password\": \""+pass+"\"}";
+                task_POST.execute(getString(R.string.url)+"usuarios/login", obj);
             }
         }
-        Log.i("Restaurante", "Usr:"+usr+" Pass:"+pass);
     }
 
     @Override
     public void onResponse(String response) {
         try {
             JSONObject obj = new JSONObject(response);
-            boolean success = obj.getBoolean("success");
-            if (success){
+            boolean success = (boolean) obj.get("success");
 
+            if (success){
+                JSONObject usu = obj.getJSONObject("user");
+                Usuario u = new Usuario();
+                u.setId(usu.getInt("id"));
+                u.setNombres(usu.getString("nombres"));
+                u.setApellidos(usu.getString("apellidos"));
+                u.setUser(usu.getString("user"));
+                UsuarioDao dao = new UsuarioDao(this);
+                dao.insert(u);
+
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+            }else{
+                CharSequence text = "Datos errados. Validelos por favor";
+                int duration = Toast.LENGTH_SHORT;
+
+                Toast toast = Toast.makeText(this, text, duration);
+                toast.show();
             }
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
+
+
 }
