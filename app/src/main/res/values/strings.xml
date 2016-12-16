@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">ParkinApp</string>
+    <string name="registro">Regístrate</string>
+    <string name="log_in">Entrar</string>
+    <string name="contra">Contraseña</string>
+    <string name="usu">Usuario</string>
+
+
+    <string name="title_section1">Ubicación</string>
+    <string name="title_section2">Parqueaderos</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="action_shop">Cerrar Sesión</string>
+
+    <string name="url">http://10.0.0.2/usuarios</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>
