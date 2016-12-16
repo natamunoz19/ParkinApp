@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+        <variable
+            name="par"
+            type="unicauca.movil.parkinapp.models.Parqueadero"
+            />
+        <variable
+            name="handlerx"
+            type="unicauca.movil.parkinapp.adapters.ParqueaderoAdapter"/>
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{(view)->handlerx.onClickParqueadero(view)}"
+        >
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/small"
+            app:cardElevation="8dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                >
+
+                <ImageView
+                    android:id="@+id/img"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/img_temp_height"
+                    android:background="#333"
+                    android:scaleType="centerCrop"
+                    android:src="@{par.imagen}"/>
+                    <!--app:imgUrl="@{par.imagen}"-->
+
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/img_temp_height"
+                    android:src="@drawable/mask" />
+
+                <TextView
+                    style="@style/TextAppearance.AppCompat.Title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#fff"
+                    android:padding="@dimen/small"
+                    android:layout_alignBottom="@id/img"
+                    tools:text="Nombre Restaurante"
+                    android:text="@{par.nombre}"
+                    />
+
+                <ImageView
+                    android:id="@+id/icon_call"
+                    android:layout_width="@dimen/icon"
+                    android:layout_height="@dimen/icon"
+                    android:src="@drawable/ic_call"
+                    android:layout_below="@id/img"
+                    android:layout_margin="@dimen/small" />
+
+                <TextView
+                    style="@style/TextAppearance.AppCompat.Body1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/icon_call"
+                    android:layout_alignBottom="@id/icon_call"
+                    tools:text="3045650670"
+                    android:text='@{""+par.telefono}'
+                    />
+
+                <ImageView
+                    android:id="@+id/icon_place"
+                    android:layout_width="@dimen/icon"
+                    android:layout_height="@dimen/icon"
+                    android:src="@drawable/ic_place"
+                    android:layout_below="@id/icon_call"
+                    android:layout_marginLeft="@dimen/small"
+                    android:layout_marginRight="@dimen/small"
+                    android:layout_marginBottom="@dimen/small" />
+
+                <TextView
+                    style="@style/TextAppearance.AppCompat.Body1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/icon_place"
+                    android:layout_alignBottom="@id/icon_place"
+                    tools:text="Calle x carrera y"
+                    android:text="@{par.direccion}"
+                    />
+
+                <ImageView
+                    android:id="@+id/icon_star"
+                    android:layout_width="@dimen/icon"
+                    android:layout_height="@dimen/icon"
+                    android:layout_below="@id/icon_place"
+                    android:src="@drawable/ic_star"
+                    android:layout_marginLeft="@dimen/small"
+                    android:layout_marginRight="@dimen/small"
+                    android:layout_marginBottom="@dimen/small"/>
+
+                <TextView
+                    android:id="@+id/label_star"
+                    style="@style/TextAppearance.AppCompat.Body1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/icon_star"
+                    android:layout_toRightOf="@id/icon_star"
+                    tools:text="5.5"
+                    android:text='@{""+par.calificacion}'
+                    />
+
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+    </FrameLayout>
+</layout>

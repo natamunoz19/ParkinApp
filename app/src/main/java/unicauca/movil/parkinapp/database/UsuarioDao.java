@@ -54,6 +54,11 @@ public class UsuarioDao {
         db.delete(TABLE,"id = ?", new String[]{""+id});
     }
 
+    public void deleteAll(){
+
+        db.delete(TABLE,null,null);
+    }
+
     public Usuario getById(long id){
         String sql = "SELECT * FROM "+ TABLE+" WHERE id = "+id;
         Cursor cursor = db.rawQuery(sql, null);

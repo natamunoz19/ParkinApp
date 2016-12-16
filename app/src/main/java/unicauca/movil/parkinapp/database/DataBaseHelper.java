@@ -51,7 +51,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 +" )";
         sqLiteDatabase.execSQL(sqlPreferencias);
 
-        String sqlCalificacion = "CREATE TABLE calificacion (id INTEGER PRIMARY KEY"
+        String sqlCalificacion = "CREATE TABLE calificacion (id INTEGER PRIMARY KEY AUTOINCREMENT"
                 +", idUsuario INT"
                 +", idParqueadero INT"
                 +", calificacion INT"

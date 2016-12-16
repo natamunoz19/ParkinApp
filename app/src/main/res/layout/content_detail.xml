@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <data>
+        <variable
+            name="parq"
+            type="unicauca.movil.parkinapp.models.Parqueadero"/>
+    </data>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout android:padding="@dimen/medium">
+
+            <ImageView
+                android:id="@+id/icon_call"
+                style="@style/IconDetail"
+                android:layout_marginBottom="@dimen/medium"
+                android:src="@drawable/ic_call" />
+
+            <TextView
+                android:id="@+id/label_phone"
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/icon_call"
+                android:layout_toRightOf="@id/icon_call"
+                tools:text="3011232323"
+                android:text="@{parq.telefono}"
+                />
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Small"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/label_phone"
+                android:layout_toRightOf="@id/icon_call"
+                android:text="@string/detail_phone" />
+
+            <ImageView
+                android:id="@+id/icon_place"
+                style="@style/IconDetail"
+                android:layout_below="@id/icon_call"
+                android:layout_marginBottom="@dimen/medium"
+                android:src="@drawable/ic_place" />
+
+            <TextView
+                android:id="@+id/label_place"
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/icon_place"
+                android:layout_toRightOf="@id/icon_place"
+                tools:text="Calle x carrera y"
+                android:text="@{parq.direccion}"
+                />
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Small"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/label_place"
+                android:layout_toRightOf="@id/icon_place"
+                android:text="@string/detail_address" />
+
+            <ImageView
+                android:id="@+id/icon_star"
+                style="@style/IconDetail"
+                android:layout_marginBottom="@dimen/medium"
+                android:layout_below="@id/icon_place"
+                android:src="@drawable/ic_star" />
+
+            <TextView
+                android:id="@+id/label_star"
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/icon_star"
+                android:layout_toRightOf="@id/icon_star"
+                tools:text="5.5"
+                android:text='@{""+parq.calificacion}'
+                />
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Small"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/label_star"
+                android:layout_toRightOf="@id/icon_star"
+                android:text="@string/calif" />
+
+            <ImageView
+                android:id="@+id/icon_car"
+                style="@style/IconDetail"
+                android:layout_marginBottom="@dimen/medium"
+                android:layout_below="@id/icon_star"
+                android:src="@drawable/ic_car" />
+
+            <TextView
+                android:id="@+id/label_car"
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/icon_car"
+                android:layout_toRightOf="@id/icon_car"
+                tools:text="7"
+                android:text='@{""+parq.lugaresLibres}'
+                />
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Small"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/label_car"
+                android:layout_toRightOf="@id/icon_car"
+                android:text="@string/freeSlots" />
+
+            <ImageView
+                android:id="@+id/icon_clockOpen"
+                style="@style/IconDetail"
+                android:layout_marginBottom="@dimen/medium"
+                android:layout_below="@id/icon_car"
+                android:src="@drawable/ic_clock_open" />
+
+            <TextView
+                android:id="@+id/label_clockOpen"
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/icon_clockOpen"
+                android:layout_toRightOf="@id/icon_clockOpen"
+                tools:text="10:00"
+                android:text='@{""+parq.horarioApertura}'
+                />
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Small"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/label_clockOpen"
+                android:layout_toRightOf="@id/icon_clockOpen"
+                android:text="@string/openTime" />
+
+            <ImageView
+                android:id="@+id/icon_clockClose"
+                style="@style/IconDetail"
+                android:layout_marginBottom="@dimen/medium"
+                android:layout_below="@id/icon_clockOpen"
+                android:src="@drawable/ic_clock_close" />
+
+            <TextView
+                android:id="@+id/label_clockClose"
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/icon_clockClose"
+                android:layout_toRightOf="@id/icon_clockClose"
+                tools:text="7"
+                android:text='@{""+parq.horarioCerrado}'
+                />
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Small"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/label_clockClose"
+                android:layout_toRightOf="@id/icon_clockClose"
+                android:text="@string/closeTime" />
+
+            <ImageView
+                android:id="@+id/icon_cost"
+                style="@style/IconDetail"
+                android:layout_below="@id/icon_clockClose"
+                android:src="@drawable/ic_money" />
+
+            <TextView
+                android:id="@+id/label_cost"
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/icon_cost"
+                android:layout_toRightOf="@id/icon_cost"
+                tools:text="1.200"
+                android:text='@{""+parq.precio}'
+                />
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Small"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/label_cost"
+                android:layout_toRightOf="@id/icon_cost"
+                android:text="@string/cost" />
+
+        </RelativeLayout>
+    </TableLayout>
+</layout>

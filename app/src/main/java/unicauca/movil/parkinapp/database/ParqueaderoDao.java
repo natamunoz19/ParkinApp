@@ -81,6 +81,11 @@ public class ParqueaderoDao {
         db.delete(TABLE,"id = ?", new String[]{""+id});
     }
 
+    public void deleteAll(){
+
+        db.delete(TABLE,null,null);
+    }
+
     public Parqueadero getById(long id){
         String sql = "SELECT * FROM "+ TABLE+" WHERE id = "+id;
         Cursor cursor = db.rawQuery(sql, null);
